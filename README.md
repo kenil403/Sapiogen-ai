@@ -21,7 +21,6 @@ sapiogen-ai/
 ├── astro.config.mjs
 ├── Dockerfile           # Multi-stage, non-root, healthcheck
 ├── render.yaml          # Render Blueprint
-├── .env.example
 └── package.json
 ```
 
@@ -77,8 +76,7 @@ All API routes are server-rendered. Rate-limited, origin-checked, honeypot-prote
 ### 2. Configure environment
 
 ```bash
-cp .env.example .env
-# Open .env and paste your MongoDB URI into MONGODB_URI
+# Create .env and set your MongoDB URI in MONGODB_URI
 # Generate ADMIN_TOKEN:   openssl rand -hex 32
 ```
 
@@ -138,7 +136,7 @@ The image:
 1. **New +** → **Web Service** → connect your repo
 2. Runtime: **Docker**
 3. Health check path: `/api/health`
-4. Add environment variables from `.env.example` (set `MONGODB_URI` + `ADMIN_TOKEN`)
+4. Add `MONGODB_URI` and `ADMIN_TOKEN` as environment variables
 5. Deploy
 
 ### MongoDB Atlas with Render
@@ -164,7 +162,7 @@ What's in place:
 - **Dedupe window** — same email within 60s (contact) / 120s (careers) are no-oped.
 - **Request guards** — `Content-Type` check, 32KB payload cap, origin allowlist.
 - **Admin auth** — Bearer-token with constant-time compare to resist timing attacks. GETs return 401 if `ADMIN_TOKEN` is unset.
-- **No secrets in code** — `.env` is gitignored; `.env.example` only.
+- **No secrets in code** — `.env` files are ignored and never included in the Docker image.
 - **Non-root container** — Docker image runs as `app` user, not root.
 
 For a multi-instance deploy, swap the in-memory rate limiter in `src/lib/rateLimit.ts` for a Redis-backed one.

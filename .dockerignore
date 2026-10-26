@@ -5,7 +5,6 @@ dist
 .gitignore
 .env
 .env.*
-!.env.example
 README.md
 *.md
 .vscode
