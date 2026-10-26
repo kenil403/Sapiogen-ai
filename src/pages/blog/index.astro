@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { posts } from '../../data/posts';
+
+const fmt = (d: string) =>
+  new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+<BaseLayout
+  title="Writing"
+  description="Notes from the Sapiogen AI studio — essays on AI-first engineering, evaluation, systems design, and the economics of building intelligent software."
+>
+
+  <section class="page-lede">
+    <div class="container">
+      <p class="sec-index">Writing</p>
+      <h1 class="page-title">
+        Notes from the studio<span class="dot">.</span>
+      </h1>
+      <p class="lede">
+        Longer-form thinking on AI-first engineering, systems design, and the
+        shape of software when intelligence is a first-class material.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <ul class="posts">
+        {posts.map((p) => (
+          <li class="post">
+            <a href={`/blog/${p.slug}`}>
+              <div class="post-meta">
+                <span class="mono post-tag">{p.tag}</span>
+                <span class="dim">{fmt(p.date)}</span>
+                <span class="dim">{p.reading}</span>
+              </div>
+              <h2 class="post-title">{p.title}</h2>
+              <p class="post-excerpt muted">{p.excerpt}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <p class="muted more-note">
+        More essays coming soon. Reach out at
+        <a href="mailto:hello@sapiogenai.com" class="link-rule">hello@sapiogenai.com</a>
+        if you&rsquo;d like to be notified.
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .posts {
+    list-style: none;
+    border-top: 1px solid var(--rule);
+  }
+  .post { border-bottom: 1px solid var(--rule); }
+  .post a {
+    display: block;
+    padding: 2.5rem 0;
+    transition: padding var(--dur-med) var(--ease);
+  }
+  .post a:hover { padding-left: 0.75rem; }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .post-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .post-title {
+    font-size: clamp(1.4rem, 3vw, 2.25rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    max-width: 28ch;
+  }
+  .post-excerpt { font-size: 1.05rem; line-height: 1.6; max-width: 60ch; }
+  .more-note { margin-top: 3rem; font-size: 1rem; }
+</style>

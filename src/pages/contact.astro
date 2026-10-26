@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Contact"
+  description="Talk to Sapiogen AI about engineering your next AI-first product. Based in Ahmedabad; working with teams around the world."
+>
+
+  <!-- Page lede -->
+  <section class="page-lede">
+    <div class="container">
+      <p class="sec-index">Contact</p>
+      <h1 class="page-title">
+        Tell us what<br />you&rsquo;re building<span class="dot">.</span>
+      </h1>
+      <p class="lede">
+        We respond to every message personally. Share as much or as little as
+        you have — a rough idea or a signed statement of work both get read
+        by a human within two business days.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-form-col">
+        <p class="sec-index">Project enquiry</p>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" required autocomplete="name" minlength="2" maxlength="120" />
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email" maxlength="160" />
+            </div>
+            <div class="field">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" autocomplete="organization" maxlength="160" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="interest">What you&rsquo;re interested in</label>
+            <select id="interest" name="interest">
+              <option value="">Select one</option>
+              <option value="product">AI Powered Product Development</option>
+              <option value="strategy">AI Strategy &amp; Consulting</option>
+              <option value="systems">AI Development &amp; Systems</option>
+              <option value="automation">AI Automation &amp; RPA</option>
+              <option value="voice">Conversational &amp; Voice AI</option>
+              <option value="integration">AI Integration &amp; Scaling</option>
+              <option value="infrastructure">AI Infrastructure Engineering</option>
+              <option value="data">AI Data Systems Engineering</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="budget">Approx. budget (optional)</label>
+            <select id="budget" name="budget">
+              <option value="">Prefer not to say</option>
+              <option value="under-25k">Under $25k</option>
+              <option value="25-75k">$25k — $75k</option>
+              <option value="75-200k">$75k — $200k</option>
+              <option value="200k-plus">$200k+</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">What are you building?</label>
+            <textarea id="message" name="message" rows="7" required minlength="10" maxlength="4000"></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website (leave this empty)</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="form-foot">
+            <button type="submit" class="btn" id="submit-btn">Send enquiry</button>
+            <p id="form-status" class="form-status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+
+      <aside class="contact-details">
+        <div class="detail-block">
+          <h4 class="col-title">Email</h4>
+          <a href="mailto:hello@sapiogenai.com" class="link-rule detail-value">
+            hello@sapiogenai.com
+          </a>
+        </div>
+
+        <div class="detail-block">
+          <h4 class="col-title">LinkedIn</h4>
+          <a
+            href="https://www.linkedin.com/company/sapiogen-ai/"
+            class="link-rule detail-value"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Sapiogen AI
+          </a>
+        </div>
+
+        <div class="detail-block">
+          <h4 class="col-title">Studio</h4>
+          <address class="detail-address">
+            Yamuna Complex, Ganga Jammuna Complex, 5,<br />
+            Chimanlal Girdharlal Road,<br />
+            opp. Pushya Hospital, near Festo,<br />
+            Shrimali Society, Navrangpura,<br />
+            Ahmedabad, Gujarat 380009<br />
+            India
+          </address>
+        </div>
+
+        <div class="detail-block">
+          <h4 class="col-title">Response time</h4>
+          <p class="detail-note muted">
+            We reply to every enquiry within two business days — most within
+            a day.
+          </p>
+        </div>
+
+        <div class="detail-block">
+          <h4 class="col-title">Status</h4>
+          <p class="detail-status mono">
+            <span class="signal-node" aria-hidden="true"></span>
+            Accepting new engagements
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 5rem;
+  }
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+
+  .contact-form {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  .contact-details {
+    padding-top: 2rem;
+    display: grid;
+    gap: 2rem;
+    align-content: start;
+  }
+  .detail-block { border-top: 1px solid var(--rule); padding-top: 1.25rem; }
+  .detail-block:first-child { border-top: none; padding-top: 0; }
+  .col-title {
+    font-family: var(--font-mark);
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .detail-value { font-size: 1.05rem; }
+  .detail-address {
+    font-style: normal;
+    line-height: 1.7;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+  }
+  .detail-note { font-size: 0.95rem; max-width: 32ch; }
+  .detail-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!status || !submitBtn) return;
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    status.textContent = 'Sending…';
+    status.className = 'form-status';
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.message || 'Could not send');
+      window.location.href = '/thank-you?kind=contact';
+    } catch (err: any) {
+      status.textContent = err.message || 'Something went wrong. Please try hello@sapiogenai.com.';
+      status.className = 'form-status error';
+      submitBtn.disabled = false;
+    }
+  });
+</script>

@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import { getPost, posts } from '../../data/posts';
+
+const { slug } = Astro.params;
+const post = getPost(slug || '');
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const fmt = (d: string) =>
+  new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+// Related posts: next up to 2 other posts
+const related = posts.filter((p) => p.slug !== post.slug).slice(0, 2);
+---
+<BaseLayout
+  title={post.title}
+  description={post.excerpt}
+>
+
+  <article class="post-article">
+    <header class="post-header">
+      <div class="container">
+        <nav class="post-nav">
+          <a href="/blog" class="link-rule">&larr; Back to Writing</a>
+        </nav>
+        <p class="sec-index post-eyebrow">
+          <span class="mono">{post.tag}</span>
+          <span class="dim">·</span>
+          <span class="dim">{fmt(post.date)}</span>
+          <span class="dim">·</span>
+          <span class="dim">{post.reading}</span>
+        </p>
+        <h1 class="post-h1">{post.title}</h1>
+        <p class="lede post-lede">{post.excerpt}</p>
+      </div>
+    </header>
+
+    <div class="container post-body">
+      {post.body.map((para) => <p>{para}</p>)}
+    </div>
+  </article>
+
+  {related.length > 0 && (
+    <section class="section related-section">
+      <div class="container">
+        <p class="sec-index">Keep reading</p>
+        <ul class="related">
+          {related.map((r) => (
+            <li>
+              <a href={`/blog/${r.slug}`}>
+                <h3>{r.title}</h3>
+                <p class="muted">{r.excerpt}</p>
+                <span class="link-rule read-more">Read essay</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <CTABanner
+    title="Working on something<br/>this applies to?"
+    primaryLabel="Start a conversation"
+  />
+
+</BaseLayout>
+
+<style>
+  .post-article { padding-top: clamp(2rem, 5vw, 3rem); }
+  .post-header { padding-bottom: var(--space-xl); border-bottom: 1px solid var(--rule); }
+  .post-nav { margin-bottom: 2.5rem; font-size: 0.9rem; }
+  .post-nav a { color: var(--text-muted); }
+  .post-eyebrow {
+    display: inline-flex;
+    gap: 0.75rem;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .post-h1 {
+    font-size: clamp(2rem, 5.5vw, 4rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    max-width: 22ch;
+  }
+  .post-lede {
+    color: var(--text-muted);
+    max-width: 56ch;
+    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  }
+
+  .post-body {
+    padding-block: var(--space-xl);
+    max-width: 720px;
+  }
+  .post-body p {
+    font-size: 1.075rem;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    max-width: none;
+  }
+  .post-body p + p { margin-top: 0; }
+
+  .related-section { padding-block: var(--space-section); border-top: 1px solid var(--rule); }
+  .related {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .related a {
+    display: block;
+    padding: 1rem 0;
+    transition: padding var(--dur-med) var(--ease);
+  }
+  .related a:hover { padding-left: 0.5rem; }
+  .related h3 { font-size: 1.3rem; margin-bottom: 0.75rem; max-width: 28ch; }
+  .related p { max-width: 44ch; margin-bottom: 1rem; }
+  .read-more { font-size: 0.9rem; }
+  @media (max-width: 760px) {
+    .related { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>

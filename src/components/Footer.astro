@@ -1,0 +1,154 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="brand" aria-label="Sapiogen AI — home">
+          <img src="/images/logo-full.jpg" alt="Sapiogen AI" class="footer-logo" />
+        </a>
+        <p class="muted footer-tag">
+          AI + Humans. Engineering 10&times; faster.
+        </p>
+        <p class="footer-status mono">
+          <span class="signal-node" aria-hidden="true"></span>
+          <span class="dim">Studio online · Ahmedabad</span>
+        </p>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4 class="col-title">Company</h4>
+          <ul>
+            <li><a href="/about" class="link-rule">About</a></li>
+            <li><a href="/process" class="link-rule">Process</a></li>
+            <li><a href="/work" class="link-rule">Work</a></li>
+            <li><a href="/careers" class="link-rule">Careers</a></li>
+            <li><a href="/blog" class="link-rule">Writing</a></li>
+            <li><a href="/contact" class="link-rule">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="col-title">Engineering</h4>
+          <ul>
+            <li><a href="/services#product" class="link-rule">AI Product Development</a></li>
+            <li><a href="/services#strategy" class="link-rule">AI Strategy &amp; Consulting</a></li>
+            <li><a href="/services#systems" class="link-rule">AI Development &amp; Systems</a></li>
+            <li><a href="/services#automation" class="link-rule">AI Automation &amp; RPA</a></li>
+            <li><a href="/services#voice" class="link-rule">Conversational &amp; Voice AI</a></li>
+            <li><a href="/services#infrastructure" class="link-rule">AI Infrastructure</a></li>
+            <li><a href="/services#data" class="link-rule">AI Data Systems</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="col-title">Reach us</h4>
+          <ul>
+            <li>
+              <a href="mailto:hello@sapiogenai.com" class="link-rule">hello@sapiogenai.com</a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/company/sapiogen-ai/"
+                class="link-rule"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li class="address muted">
+              Yamuna Complex, 5, C G Road<br />
+              Navrangpura, Ahmedabad<br />
+              Gujarat 380009, India
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="dim">© {year} Sapiogen AI. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="/privacy" class="dim link-rule">Privacy</a>
+        <span class="dim">·</span>
+        <a href="/terms" class="dim link-rule">Terms</a>
+      </div>
+      <p class="dim">Engineered in Ahmedabad.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--black);
+    border-top: 1px solid var(--rule);
+    padding-top: var(--space-xl);
+    padding-bottom: calc(var(--space-md) + var(--safe-bottom));
+    margin-top: var(--space-section);
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: var(--space-xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--rule);
+  }
+  .footer-logo {
+    max-width: 260px;
+    width: 100%;
+    opacity: 0.95;
+  }
+  .footer-tag {
+    margin-top: 1.25rem;
+    font-size: 0.95rem;
+    max-width: 32ch;
+  }
+  .footer-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  .col-title {
+    font-family: var(--font-mark);
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .footer-col ul { list-style: none; display: grid; gap: 0.6rem; }
+  .footer-col a { color: var(--text-muted); font-size: 0.95rem; }
+  .footer-col a:hover { color: var(--text); }
+  .address { font-size: 0.9rem; line-height: 1.6; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+  }
+  .footer-legal { display: inline-flex; align-items: center; gap: 0.6rem; }
+
+  @media (max-width: 900px) {
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-cols { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+  @media (max-width: 520px) {
+    .footer-cols { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const kind = Astro.url.searchParams.get('kind') || 'contact';
+const copy = kind === 'application'
+  ? {
+      sub: 'Application received',
+      title: 'Thanks — we have your application.',
+      body:
+        'We read every one, personally. Expect to hear from us within a week with next steps or an honest decline. Either way, we will reply.'
+    }
+  : {
+      sub: 'Enquiry received',
+      title: 'Thanks — we have your message.',
+      body:
+        'A human from the studio will respond within two business days. If it is urgent, write directly to hello@sapiogenai.com and mention the subject you reached us about.'
+    };
+---
+<BaseLayout title="Thank you" description="We have received your submission." noindex={true}>
+
+  <section class="thanks">
+    <div class="container">
+      <p class="sec-index">{copy.sub}</p>
+      <div class="confirmation">
+        <span class="signal-node" aria-hidden="true"></span>
+        <span class="mono confirm-code">SIG · {new Date().toISOString().slice(0,10).replace(/-/g,'')}-{Math.random().toString(36).slice(2,8).toUpperCase()}</span>
+      </div>
+
+      <h1 class="thanks-head">{copy.title}</h1>
+      <p class="lede">{copy.body}</p>
+
+      <div class="thanks-ctas">
+        <a href="/" class="btn">Return to index</a>
+        <a href="/work" class="btn btn-ghost">See our work</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .thanks {
+    min-height: 68vh;
+    min-height: 68dvh;
+    display: flex;
+    align-items: center;
+    padding: var(--space-section) 0;
+  }
+  .confirmation {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--rule-strong);
+  }
+  .confirm-code {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+  .thanks-head {
+    font-size: clamp(2.25rem, 6vw, 4.25rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 1rem 0 1.5rem;
+    max-width: 20ch;
+  }
+  .thanks-ctas {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+</style>

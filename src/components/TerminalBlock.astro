@@ -1,0 +1,41 @@
+---
+// Styled pseudo-terminal block. Decorative — content is set via slot.
+interface Props {
+  title?: string;
+}
+const { title = 'sapiogen://engine' } = Astro.props;
+---
+<div class="terminal-wrap">
+  <div class="terminal-bar">
+    <span class="mono bar-title">{title}</span>
+    <span class="bar-dots mono dim">● ● ●</span>
+  </div>
+  <pre class="terminal"><code><slot /></code></pre>
+</div>
+
+<style>
+  .terminal-wrap {
+    border: 1px solid var(--rule-strong);
+    background: var(--black-elev);
+  }
+  .terminal-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--black-elev-2);
+  }
+  .bar-title { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.05em; }
+  .bar-dots { font-size: 0.6rem; letter-spacing: 0.3em; }
+  .terminal {
+    border: none;
+    margin: 0;
+    padding: 1.25rem 1.5rem;
+    white-space: pre;
+    overflow-x: auto;
+  }
+  @media (max-width: 640px) {
+    .terminal { padding: 1rem; font-size: 0.78rem; }
+  }
+</style>

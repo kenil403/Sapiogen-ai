@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const lastUpdated = '26 October 2026';
+---
+<BaseLayout
+  title="Privacy policy"
+  description="Sapiogen AI privacy policy — what information we collect, how we use it, and how to request its deletion."
+>
+
+  <section class="page-lede">
+    <div class="container">
+      <p class="sec-index">Privacy policy</p>
+      <h1 class="page-title">Privacy policy<span class="dot">.</span></h1>
+      <p class="lede">
+        Short version: we only collect what we need to answer you, we don&rsquo;t
+        sell it, and we delete it on request. Full version follows.
+      </p>
+      <p class="mono last-updated">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container legal">
+
+      <h2>1. Who we are</h2>
+      <p>
+        Sapiogen AI (&ldquo;Sapiogen&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo;)
+        is an AI-first software engineering studio based at Yamuna Complex,
+        Ganga Jammuna Complex, 5, Chimanlal Girdharlal Road, Navrangpura,
+        Ahmedabad, Gujarat 380009, India. We can be reached at
+        <a href="mailto:hello@sapiogenai.com" class="link-rule">hello@sapiogenai.com</a>.
+      </p>
+
+      <h2>2. Information we collect</h2>
+      <p>We collect only information you provide directly:</p>
+      <ul>
+        <li><strong>Contact form:</strong> name, email, company (optional), interest, budget (optional), and the message you write.</li>
+        <li><strong>Careers form:</strong> name, email, phone (optional), role of interest, portfolio and LinkedIn URLs, years of experience, and the message you write.</li>
+        <li><strong>Server logs:</strong> IP address, user agent, and timestamp for every API request, used to prevent abuse and debug problems.</li>
+      </ul>
+      <p>We do not use third-party analytics, cross-site tracking, or advertising cookies on this website.</p>
+
+      <h2>3. How we use it</h2>
+      <ul>
+        <li>To respond to your enquiry or application.</li>
+        <li>To keep records of applications so we can refer back to them during hiring.</li>
+        <li>To prevent abuse of our forms (rate limiting, spam detection).</li>
+      </ul>
+      <p>We never sell your information, and we never use it for marketing to unrelated third parties.</p>
+
+      <h2>4. Where it&rsquo;s stored</h2>
+      <p>
+        Form submissions are stored in a MongoDB Atlas database. Server
+        infrastructure is operated by third-party hosting providers under
+        standard commercial agreements that include confidentiality and
+        security obligations.
+      </p>
+
+      <h2>5. How long we keep it</h2>
+      <ul>
+        <li>Contact enquiries: up to 24 months, then deleted or anonymised.</li>
+        <li>Job applications: up to 24 months unless you ask us to delete them sooner.</li>
+        <li>Server logs: rotated at 30 days.</li>
+      </ul>
+
+      <h2>6. Your rights</h2>
+      <p>
+        You can ask us at any time to show you what we have, correct it, or
+        delete it. Email
+        <a href="mailto:hello@sapiogenai.com" class="link-rule">hello@sapiogenai.com</a>
+        with the request and we will act on it within 30 days.
+      </p>
+
+      <h2>7. Cookies</h2>
+      <p>
+        We do not set tracking cookies. The site may set first-party cookies
+        strictly necessary for security headers or form session integrity.
+      </p>
+
+      <h2>8. Children</h2>
+      <p>
+        This website is not directed to children under 16, and we do not
+        knowingly collect their information.
+      </p>
+
+      <h2>9. Changes</h2>
+      <p>
+        If this policy materially changes, we will update the date at the top
+        of this page and, where appropriate, notify affected individuals
+        directly.
+      </p>
+
+      <h2>10. Contact</h2>
+      <p>
+        Questions, concerns, or requests:
+        <a href="mailto:hello@sapiogenai.com" class="link-rule">hello@sapiogenai.com</a>.
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .last-updated {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+  }
+  .legal {
+    max-width: 760px;
+  }
+  .legal h2 {
+    font-size: 1.4rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .legal h2:first-child { margin-top: 0; }
+  .legal p { color: var(--text); line-height: 1.7; margin-bottom: 1rem; max-width: 68ch; }
+  .legal ul { list-style: none; margin: 1rem 0 1.5rem; display: grid; gap: 0.5rem; }
+  .legal ul li {
+    position: relative;
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+  .legal ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.8em;
+    width: 8px; height: 1px;
+    background: var(--text-dim);
+  }
+  .legal strong { color: var(--text); font-weight: 500; }
+</style>

@@ -1,0 +1,71 @@
+---
+interface Props {
+  value: number;
+  label: string;
+  prefix?: string;
+  suffix?: string;
+  duration?: number;
+}
+const { value, label, prefix = '', suffix = '', duration = 1600 } = Astro.props;
+const id = `mc-${Math.random().toString(36).slice(2, 10)}`;
+---
+<div class="metric">
+  <div class="metric-value mono" data-target={value} data-duration={duration} id={id}>
+    <span class="prefix">{prefix}</span><span class="num">0</span><span class="suffix">{suffix}</span>
+  </div>
+  <p class="metric-label">{label}</p>
+</div>
+
+<style>
+  .metric {
+    display: grid;
+    gap: 0.75rem;
+    padding-block: 1rem;
+  }
+  .metric-value {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--text);
+  }
+  .metric-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+</style>
+
+<script>
+  const counters = document.querySelectorAll<HTMLElement>('.metric-value');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target as HTMLElement;
+        if (el.dataset.done === '1') return;
+        el.dataset.done = '1';
+        const target = Number(el.dataset.target || '0');
+        const dur = Number(el.dataset.duration || '1500');
+        const num = el.querySelector<HTMLElement>('.num')!;
+        const start = performance.now();
+        function tick(now: number) {
+          const t = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - t, 3);
+          num.textContent = Math.round(target * eased).toLocaleString();
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.4 });
+    counters.forEach((c) => io.observe(c));
+  } else {
+    counters.forEach((c) => {
+      const target = Number(c.dataset.target || '0');
+      c.querySelector('.num')!.textContent = target.toLocaleString();
+    });
+  }
+</script>

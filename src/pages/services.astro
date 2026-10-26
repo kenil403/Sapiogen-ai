@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { services } from '../data/services';
+---
+<BaseLayout
+  title="Services"
+  description="Eight disciplines of AI-first software engineering — from AI-powered product development to AI infrastructure and data systems engineering."
+>
+
+  <!-- Page lede -->
+  <section class="page-lede">
+    <div class="container">
+      <p class="sec-index">Services</p>
+      <h1 class="page-title">
+        Eight disciplines,<br/>one engineering model<span class="dot">.</span>
+      </h1>
+      <p class="lede">
+        Everything we offer is engineered by the same team, under the same
+        operating model, so a product can move across disciplines
+        — strategy to systems, systems to infrastructure — without a
+        hand-off dropping the thread.
+      </p>
+    </div>
+  </section>
+
+  <!-- Index -->
+  <section class="section index-section">
+    <div class="container">
+      <p class="sec-index">Index</p>
+      <ul class="svc-index">
+        {services.map((s, i) => (
+          <li>
+            <a href={`#${s.id}`}>
+              <span class="svc-num mono">{String(i + 1).padStart(2, '0')}</span>
+              <span class="svc-name">{s.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Service details -->
+  {services.map((s, i) => (
+    <section id={s.id} class="section svc-detail">
+      <div class="container col-split">
+        <div class="col-marker">
+          <p class="sec-index mono">{String(i + 1).padStart(2, '0')}</p>
+        </div>
+        <div>
+          <h2>{s.title}</h2>
+          <p class="lede" style="margin-top: 1.25rem;">{s.short}</p>
+          <p class="svc-paragraph">{s.detail}</p>
+
+          <h4 class="caps-title">Capabilities</h4>
+          <ul class="caps">
+            {s.capabilities.map((c) => (
+              <li>{c}</li>
+            ))}
+          </ul>
+
+          <a href="/contact" class="link-rule svc-cta">
+            Discuss this discipline
+          </a>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <CTABanner
+    title="Have a problem that<br/>needs engineering?"
+    body="Tell us what you&rsquo;re building. We&rsquo;ll come back with a plan and the people to execute it."
+    primaryLabel="Start a conversation"
+    secondaryHref="/process"
+    secondaryLabel="How we work"
+  />
+
+</BaseLayout>
+
+<style>
+  .svc-index {
+    list-style: none;
+    margin-top: 2rem;
+    border-top: 1px solid var(--rule);
+    columns: 2;
+    column-gap: 4rem;
+  }
+  .svc-index li { break-inside: avoid; }
+  .svc-index a {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--text-muted);
+    transition: color var(--dur-fast) var(--ease);
+  }
+  .svc-index a:hover { color: var(--text); }
+  .svc-num {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    min-width: 2.5em;
+  }
+  .svc-name {
+    font-size: 1.05rem;
+    font-weight: 400;
+  }
+  @media (max-width: 760px) { .svc-index { columns: 1; } }
+
+  .svc-detail .svc-paragraph {
+    margin-top: 1.5rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 64ch;
+  }
+  .caps-title {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .caps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .caps li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 1rem;
+    color: var(--text);
+  }
+  @media (max-width: 760px) { .caps { grid-template-columns: 1fr; } }
+  .svc-cta {
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+  }
+</style>

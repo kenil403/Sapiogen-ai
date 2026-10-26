@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner from '../components/CTABanner.astro';
+---
+<BaseLayout
+  title="About"
+  description="Sapiogen AI is an AI-first software engineering studio based in Ahmedabad. Meet the team, the founder, and the studio."
+>
+
+  <!-- Page lede -->
+  <section class="page-lede">
+    <div class="container">
+      <p class="sec-index">About the studio</p>
+      <h1 class="page-title">
+        A small, senior studio<br/>built for AI-first work<span class="dot">.</span>
+      </h1>
+      <p class="lede">
+        We are an AI-first software engineering studio in Ahmedabad. We hire
+        senior, staff lean, and ship together — because that is the shape of
+        a team that can take a problem from brief to production without a
+        handoff dropping the thread.
+      </p>
+    </div>
+  </section>
+
+  <!-- Why we exist -->
+  <section class="section">
+    <div class="container col-split">
+      <div class="col-marker"><p class="sec-index">01 — Why we exist</p></div>
+      <div>
+        <h2>The team we wished existed.</h2>
+        <p class="lede" style="margin-top: 1.5rem;">
+          Sapiogen AI was founded because the kind of team that treats
+          AI as a first-class engineering material — not an afterthought —
+          was still rare. Teams were either research-strong but
+          operationally weak, or operationally strong and still working
+          around AI rather than with it.
+        </p>
+        <p class="lede" style="margin-top: 1rem; color: var(--text-muted);">
+          We built the studio to close that gap. Engineers who ship
+          production AI, pair with senior design and strategy, and remain
+          personally accountable for the systems they put into the world.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section class="section">
+    <div class="container col-split">
+      <div class="col-marker"><p class="sec-index">02 — Leadership</p></div>
+      <div class="founder">
+        <h2>Founder &amp; CEO</h2>
+        <div class="founder-card">
+          <div class="founder-name">
+            <h3>Rahil D. Jain</h3>
+            <p class="muted">Founder &amp; Chief Executive Officer</p>
+          </div>
+          <p class="founder-bio">
+            Rahil leads engineering direction and client partnerships at
+            Sapiogen AI. He founded the studio to answer a specific
+            question: what does a software team look like when it is
+            engineered around the materials AI gives us, instead of around
+            the materials it does not?
+          </p>
+          <p class="founder-bio" style="margin-top: 1rem;">
+            Under his lead the studio ships AI-first products end to end
+            — from framing the right problem, to designing the system, to
+            standing with it in production until the customer&rsquo;s own
+            team is operating it confidently.
+          </p>
+          <a
+            href="https://www.linkedin.com/in/rahil-d-jain-90536a169"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-rule founder-link"
+          >
+            Rahil on LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Operating principles - DISTINCT from careers page -->
+  <section class="section">
+    <div class="container col-split">
+      <div class="col-marker"><p class="sec-index">03 — Operating principles</p></div>
+      <div>
+        <h2>How the studio operates.</h2>
+        <div class="principle-grid">
+          <article>
+            <h3>Fewer people, deeper ownership</h3>
+            <p class="muted">We staff lean teams on each engagement, because a small group of senior people with full context beats a large group with partial context, every time.</p>
+          </article>
+          <article>
+            <h3>Decisions written down</h3>
+            <p class="muted">Architecture, trade-offs, and the reasoning behind both are documented so the client can argue with them — before the system is built, not after.</p>
+          </article>
+          <article>
+            <h3>Production is the deliverable</h3>
+            <p class="muted">Shipped and operating in your production environment is the only state we count as finished. Prototypes are a step, not an output.</p>
+          </article>
+          <article>
+            <h3>Hand over cleanly</h3>
+            <p class="muted">Every engagement ends with your team able to own what we built — runbooks, evaluations, and the knowledge to extend the system without us.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Studio & location -->
+  <section class="section">
+    <div class="container col-split">
+      <div class="col-marker"><p class="sec-index">04 — Studio</p></div>
+      <div>
+        <h2>Based in Ahmedabad.</h2>
+        <p class="lede" style="margin-top: 1.25rem;">
+          The studio sits in the heart of Navrangpura, Ahmedabad. We work
+          on-site as a team and partner with clients around the world across
+          time zones.
+        </p>
+        <address class="studio-address muted">
+          Yamuna Complex, Ganga Jammuna Complex, 5,<br />
+          Chimanlal Girdharlal Road, opp. Pushya Hospital,<br />
+          near Festo, Shrimali Society, Navrangpura,<br />
+          Ahmedabad, Gujarat 380009, India
+        </address>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    eyebrow="05 — Build with us"
+    title="Have an AI-first problem?<br/>Let&rsquo;s engineer it."
+    primaryHref="/contact"
+    primaryLabel="Start a conversation"
+    secondaryHref="/careers"
+    secondaryLabel="Join the team"
+  />
+
+</BaseLayout>
+
+<style>
+  .principle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 3rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .principle-grid h3 { margin-bottom: 0.75rem; }
+  @media (max-width: 760px) {
+    .principle-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .founder-card {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    margin-top: 2rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .founder-name h3 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+  .founder-bio { line-height: 1.65; color: var(--text-muted); max-width: 56ch; }
+  .founder-link { margin-top: 1.5rem; display: inline-block; font-size: 0.95rem; }
+  @media (max-width: 760px) {
+    .founder-card { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  .studio-address {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-style: normal;
+    line-height: 1.75;
+    font-size: 1.05rem;
+  }
+</style>

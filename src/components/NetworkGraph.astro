@@ -1,0 +1,85 @@
+---
+// A subtle AI-themed network graph.
+// Pure SVG + CSS; respects reduced motion; purely decorative (aria-hidden).
+interface Props {
+  class?: string;
+}
+const { class: cls = '' } = Astro.props;
+---
+<svg
+  class={`net-graph ${cls}`}
+  viewBox="0 0 800 600"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  focusable="false"
+>
+  <!-- edges -->
+  <g class="edges" stroke="currentColor" stroke-width="0.6" fill="none" opacity="0.5">
+    <path d="M 120 120 L 300 220" />
+    <path d="M 120 120 L 220 320" />
+    <path d="M 300 220 L 450 180" />
+    <path d="M 300 220 L 400 380" />
+    <path d="M 300 220 L 220 320" />
+    <path d="M 450 180 L 620 260" />
+    <path d="M 450 180 L 560 420" />
+    <path d="M 220 320 L 400 380" />
+    <path d="M 400 380 L 560 420" />
+    <path d="M 400 380 L 520 500" />
+    <path d="M 560 420 L 680 500" />
+    <path d="M 620 260 L 720 160" />
+    <path d="M 620 260 L 560 420" />
+    <path d="M 520 500 L 680 500" />
+  </g>
+
+  <!-- data pulses that travel edges -->
+  <g class="pulses" fill="currentColor">
+    <circle r="2.5" class="pulse p1">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M 120 120 L 300 220 L 450 180 L 620 260" />
+    </circle>
+    <circle r="2.5" class="pulse p2">
+      <animateMotion dur="5.5s" repeatCount="indefinite" path="M 220 320 L 400 380 L 560 420 L 680 500" />
+    </circle>
+    <circle r="2" class="pulse p3">
+      <animateMotion dur="6.5s" repeatCount="indefinite" path="M 120 120 L 220 320 L 400 380 L 520 500" />
+    </circle>
+    <circle r="2" class="pulse p4">
+      <animateMotion dur="4.5s" repeatCount="indefinite" path="M 450 180 L 620 260 L 720 160" />
+    </circle>
+  </g>
+
+  <!-- nodes -->
+  <g class="nodes" fill="currentColor">
+    <circle cx="120" cy="120" r="4" />
+    <circle cx="300" cy="220" r="5" />
+    <circle cx="220" cy="320" r="3.5" />
+    <circle cx="450" cy="180" r="4.5" />
+    <circle cx="400" cy="380" r="5" />
+    <circle cx="620" cy="260" r="4" />
+    <circle cx="560" cy="420" r="3.5" />
+    <circle cx="720" cy="160" r="3" />
+    <circle cx="520" cy="500" r="3" />
+    <circle cx="680" cy="500" r="4" />
+  </g>
+</svg>
+
+<style>
+  .net-graph {
+    color: var(--text);
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+  }
+  .net-graph .edges path {
+    stroke-dasharray: 4 6;
+    animation: dash 60s linear infinite;
+  }
+  .net-graph .pulses circle { opacity: 0.9; }
+  @keyframes dash {
+    to { stroke-dashoffset: -200; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .net-graph .edges path { animation: none; stroke-dasharray: 0; }
+    .net-graph .pulses { display: none; }
+  }
+</style>

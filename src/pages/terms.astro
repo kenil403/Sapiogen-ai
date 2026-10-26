@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const lastUpdated = '26 October 2026';
+---
+<BaseLayout
+  title="Terms of use"
+  description="Terms of use for the Sapiogen AI website."
+>
+
+  <section class="page-lede">
+    <div class="container">
+      <p class="sec-index">Terms of use</p>
+      <h1 class="page-title">Terms of use<span class="dot">.</span></h1>
+      <p class="lede">
+        These terms govern your use of this website. For the terms of a
+        client engagement, see your signed statement of work.
+      </p>
+      <p class="mono last-updated">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container legal">
+
+      <h2>1. Agreement</h2>
+      <p>
+        By accessing or using sapiogenai.com (&ldquo;the Site&rdquo;), you
+        agree to these terms. If you do not agree, please do not use the
+        Site.
+      </p>
+
+      <h2>2. Operator</h2>
+      <p>
+        The Site is operated by Sapiogen AI, based at Yamuna Complex, 5,
+        Chimanlal Girdharlal Road, Navrangpura, Ahmedabad, Gujarat 380009,
+        India. Contact:
+        <a href="mailto:hello@sapiogenai.com" class="link-rule">hello@sapiogenai.com</a>.
+      </p>
+
+      <h2>3. Content on the Site</h2>
+      <p>
+        Everything on the Site — text, images, code examples, and brand
+        marks — is owned by Sapiogen AI or used with permission, and is
+        protected by applicable copyright and trademark law. You may read and
+        share links to this content; you may not copy, modify, or
+        redistribute it without written permission.
+      </p>
+
+      <h2>4. Submissions</h2>
+      <p>
+        Information you submit through the contact or careers forms is
+        handled under our
+        <a href="/privacy" class="link-rule">Privacy policy</a>. By
+        submitting, you confirm the information is accurate and that you have
+        the right to share it.
+      </p>
+
+      <h2>5. Acceptable use</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>Attempt to disrupt, overload, or probe the Site for vulnerabilities without written authorisation.</li>
+        <li>Scrape content at a volume or rate that affects other visitors.</li>
+        <li>Submit false, misleading, or malicious information through our forms.</li>
+        <li>Use the Site to send spam or malware.</li>
+      </ul>
+      <p>
+        We may rate-limit, block, or take legal action against activity that
+        breaches these rules.
+      </p>
+
+      <h2>6. No professional advice</h2>
+      <p>
+        Content on the Site, including blog posts, is published for general
+        information. It is not professional advice. Decisions you make based
+        on it are your own.
+      </p>
+
+      <h2>7. Third-party links</h2>
+      <p>
+        The Site links to external websites that we do not control. We are
+        not responsible for their content or practices.
+      </p>
+
+      <h2>8. Warranty disclaimer</h2>
+      <p>
+        The Site is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;,
+        without warranties of any kind, express or implied, to the fullest
+        extent permitted by law.
+      </p>
+
+      <h2>9. Limitation of liability</h2>
+      <p>
+        To the fullest extent permitted by law, Sapiogen AI will not be
+        liable for any indirect, incidental, special, consequential, or
+        punitive damages arising from your use of the Site.
+      </p>
+
+      <h2>10. Changes</h2>
+      <p>
+        We may update these terms. Material changes will be reflected in the
+        &ldquo;Last updated&rdquo; date at the top of this page.
+      </p>
+
+      <h2>11. Governing law</h2>
+      <p>
+        These terms are governed by the laws of India. Disputes are subject
+        to the exclusive jurisdiction of the courts in Ahmedabad, Gujarat.
+      </p>
+
+      <h2>12. Contact</h2>
+      <p>
+        Questions about these terms:
+        <a href="mailto:hello@sapiogenai.com" class="link-rule">hello@sapiogenai.com</a>.
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .last-updated {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+  }
+  .legal { max-width: 760px; }
+  .legal h2 {
+    font-size: 1.4rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .legal h2:first-child { margin-top: 0; }
+  .legal p { color: var(--text); line-height: 1.7; margin-bottom: 1rem; max-width: 68ch; }
+  .legal ul { list-style: none; margin: 1rem 0 1.5rem; display: grid; gap: 0.5rem; }
+  .legal ul li {
+    position: relative;
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+  .legal ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.8em;
+    width: 8px; height: 1px;
+    background: var(--text-dim);
+  }
+</style>

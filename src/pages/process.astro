@@ -1,0 +1,265 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalBlock from '../components/TerminalBlock.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { phases } from '../data/process';
+---
+<BaseLayout
+  title="Process"
+  description="How Sapiogen AI delivers AI-first engineering work — four phases, defined outcomes, accountable execution, clean hand-over."
+>
+
+  <!-- Page lede -->
+  <section class="page-lede">
+    <div class="container">
+      <p class="sec-index">Process</p>
+      <h1 class="page-title">
+        Measured by outcomes,<br/>not effort<span class="dot">.</span>
+      </h1>
+      <p class="lede">
+        Our engagement model is built around defined outcomes, clear
+        milestones, and accountable execution. Every phase delivers
+        tangible business value — no ambiguity, no unnecessary complexity,
+        only progress that moves the product forward.
+      </p>
+    </div>
+  </section>
+
+  <!-- Phases - using numbered steps because this IS a sequence -->
+  <section class="section">
+    <div class="container">
+      <p class="sec-index">Four phases</p>
+      <h2 class="phases-head">From frame to production.</h2>
+
+      <ol class="phase-list">
+        {phases.map((phase) => (
+          <li id={phase.id} class="phase">
+            <div class="phase-head">
+              <div class="phase-index">
+                <span class="mono phase-num">{phase.index}</span>
+                <span class="mono phase-duration dim">{phase.duration}</span>
+              </div>
+              <div class="phase-body">
+                <h3>{phase.title}</h3>
+                <p class="phase-desc">{phase.description}</p>
+
+                <h4 class="deliverables-title">Deliverables</h4>
+                <ul class="deliverables">
+                  {phase.deliverables.map((d) => <li>{d}</li>)}
+                </ul>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Operating truths -->
+  <section class="section">
+    <div class="container col-split">
+      <div class="col-marker"><p class="sec-index">Operating truths</p></div>
+      <div>
+        <h2>Things we don&rsquo;t negotiate.</h2>
+        <ul class="truths">
+          <li>
+            <h4>Scope is agreed before the first commit.</h4>
+            <p class="muted">If we don&rsquo;t know what we&rsquo;re building, we don&rsquo;t start building it.</p>
+          </li>
+          <li>
+            <h4>Evaluation ships with the system.</h4>
+            <p class="muted">An AI system without an eval harness is a demo. We ship the harness alongside the system from day one.</p>
+          </li>
+          <li>
+            <h4>You own the code.</h4>
+            <p class="muted">Everything we build is yours — IP, source, infrastructure config, documentation. No lock-in to us.</p>
+          </li>
+          <li>
+            <h4>We say no to the wrong work.</h4>
+            <p class="muted">If AI isn&rsquo;t the right tool for the problem, we&rsquo;ll say so. Our reputation depends on this more than on billing it.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement shapes -->
+  <section class="section">
+    <div class="container col-split">
+      <div class="col-marker"><p class="sec-index">Engagements</p></div>
+      <div>
+        <h2>Three ways to work with us.</h2>
+        <div class="engage-grid">
+          <article>
+            <p class="mono engage-tag">Sprint</p>
+            <h3>Strategic sprint</h3>
+            <p class="muted">A short, intensive engagement to frame a problem, map opportunities, and arrive at a plan the team can execute — ours or yours.</p>
+            <p class="mono engage-detail">2&ndash;6 weeks · fixed outcome</p>
+          </article>
+          <article>
+            <p class="mono engage-tag">Build</p>
+            <h3>Product build</h3>
+            <p class="muted">End-to-end engineering of an AI-first product or system. Senior team, defined milestones, production system as the deliverable.</p>
+            <p class="mono engage-detail">8+ weeks · outcome-priced</p>
+          </article>
+          <article>
+            <p class="mono engage-tag">Operate</p>
+            <h3>Embedded operation</h3>
+            <p class="muted">We stand with a system in production — monitoring, iterating against real usage, and tuning it — until your team confidently owns it.</p>
+            <p class="mono engage-detail">Rolling · monthly retainer</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terminal interlude - communication cadence -->
+  <section class="section">
+    <div class="container col-split">
+      <div class="col-marker"><p class="sec-index">Cadence</p></div>
+      <div>
+        <h2>How we communicate.</h2>
+        <p class="lede muted" style="margin-top: 1rem; max-width: 56ch;">
+          Visibility is a deliverable. You see what is landing, what is
+          blocked, and what we are deciding — in the same channels your team
+          already uses.
+        </p>
+        <div style="margin-top: 2.5rem;">
+          <TerminalBlock title="sapiogen://cadence.yml">
+<span class="kw">daily</span>:    <span class="str">async stand-up in your Slack / Linear</span>
+<span class="kw">weekly</span>:   <span class="str">30-min call + written progress note</span>
+<span class="kw">biweekly</span>: <span class="str">demo of what shipped + metrics</span>
+<span class="kw">monthly</span>:  <span class="str">retrospective + next-phase decisions</span>
+
+<span class="cmt"># Everything written down. Nothing invisible.</span>
+          </TerminalBlock>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    title="Ready to start?"
+    body="Bring us the problem. We&rsquo;ll bring the plan and the people."
+    primaryLabel="Start a conversation"
+    secondaryHref="/services"
+    secondaryLabel="See disciplines"
+  />
+
+</BaseLayout>
+
+<style>
+  .phases-head { margin: 1rem 0 2rem; }
+
+  .phase-list {
+    list-style: none;
+    counter-reset: none;
+    border-top: 1px solid var(--rule);
+    margin-top: 1rem;
+  }
+  .phase {
+    border-bottom: 1px solid var(--rule);
+    padding-block: 3rem;
+  }
+  .phase-head {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+  .phase-index {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .phase-num {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .phase-duration {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .phase-body h3 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 1rem; }
+  .phase-desc {
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 64ch;
+  }
+  .deliverables-title {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .deliverables {
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+  }
+  .deliverables li {
+    position: relative;
+    padding-left: 1.25rem;
+    color: var(--text);
+  }
+  .deliverables li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.75em;
+    width: 8px;
+    height: 1px;
+    background: var(--text-dim);
+  }
+  @media (max-width: 760px) {
+    .phase-head { grid-template-columns: 1fr; gap: 1rem; }
+    .phase { padding-block: 2.25rem; }
+  }
+
+  .truths {
+    list-style: none;
+    display: grid;
+    gap: 1.75rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .truths h4 { margin-bottom: 0.4rem; font-size: 1.1rem; }
+  .truths p { max-width: 60ch; }
+
+  .engage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .engage-grid article { border-left: 1px solid var(--rule); padding-left: 1.5rem; }
+  .engage-grid article:first-child { border-left: none; padding-left: 0; }
+  .engage-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 0.75rem;
+  }
+  .engage-grid h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+  .engage-detail {
+    margin-top: 1.25rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  @media (max-width: 900px) {
+    .engage-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .engage-grid article { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 1.5rem; }
+    .engage-grid article:first-child { border-top: none; padding-top: 0; }
+  }
+</style>

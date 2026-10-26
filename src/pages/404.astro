@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page not found" description="The page you were looking for doesn't exist." noindex={true}>
+
+  <section class="not-found">
+    <div class="container">
+      <p class="sec-index mono">Error 404</p>
+      <h1 class="nf-title">That page isn&rsquo;t engineered yet<span class="dot">.</span></h1>
+      <p class="lede" style="color: var(--text-muted);">
+        The address you entered doesn&rsquo;t exist on this site. Head back to
+        the index, or reach us directly if something feels off.
+      </p>
+      <div class="nf-ctas">
+        <a href="/" class="btn">Return to index</a>
+        <a href="/contact" class="btn btn-ghost">Contact us</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 68vh;
+    min-height: 68dvh;
+    display: flex;
+    align-items: center;
+    padding: var(--space-section) 0;
+  }
+  .nf-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 1.5rem 0 1.5rem;
+    max-width: 20ch;
+  }
+  .nf-title .dot { display: inline-block; transform: translateY(-0.1em); }
+  .nf-ctas {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+</style>

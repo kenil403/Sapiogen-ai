@@ -1,0 +1,117 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = 'Sapiogen AI — AI-first software engineering. We architect intelligent systems, scalable platforms, and AI-powered products engineered 10x faster.',
+  canonical,
+  noindex = false
+} = Astro.props;
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://sapiogenai.com';
+const fullTitle =
+  title === 'Sapiogen AI'
+    ? 'Sapiogen AI — AI-First Software Engineering'
+    : `${title} — Sapiogen AI`;
+
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Preconnects (fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Sapiogen AI" />
+    <meta property="og:image" content={`${siteUrl}/images/logo-full.jpg`} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/images/logo-full.jpg`} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
+    <link rel="apple-touch-icon" href="/images/logo.jpg" />
+
+    <!-- Structured data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Sapiogen AI',
+        url: siteUrl,
+        logo: `${siteUrl}/images/logo.jpg`,
+        email: 'hello@sapiogenai.com',
+        description:
+          'AI-first software engineering studio. We architect intelligent systems, scalable platforms, and AI-powered products.',
+        sameAs: ['https://www.linkedin.com/company/sapiogen-ai/'],
+        founder: {
+          '@type': 'Person',
+          name: 'Rahil D. Jain',
+          sameAs: 'https://www.linkedin.com/in/rahil-d-jain-90536a169'
+        },
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress:
+            'Yamuna Complex, Ganga Jammuna Complex, 5, Chimanlal Girdharlal Rd, opp. Pushya Hospital, near Festo, Shrimali Society, Navrangpura',
+          addressLocality: 'Ahmedabad',
+          addressRegion: 'Gujarat',
+          postalCode: '380009',
+          addressCountry: 'IN'
+        }
+      })}
+    />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--text);
+    color: var(--black);
+    padding: 0.75rem 1rem;
+    z-index: 999;
+    font-weight: 500;
+  }
+  .skip-link:focus { left: 1rem; top: 1rem; }
+</style>

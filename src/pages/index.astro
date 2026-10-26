@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NetworkGraph from '../components/NetworkGraph.astro';
+import Marquee from '../components/Marquee.astro';
+import MetricCounter from '../components/MetricCounter.astro';
+import TerminalBlock from '../components/TerminalBlock.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { services } from '../data/services';
+
+const stackItems = [
+  'RAG + Retrieval',
+  'Vector Databases',
+  'Agentic Workflows',
+  'Evaluation Harnesses',
+  'LLM Orchestration',
+  'Streaming Voice',
+  'Fine-tuning',
+  'Guardrails',
+  'Observability',
+  'MongoDB',
+  'Astro',
+  'Node.js',
+  'Python',
+  'Postgres + pgvector'
+];
+---
+<BaseLayout title="Sapiogen AI">
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <NetworkGraph class="hero-net" />
+
+    <div class="container hero-inner">
+      <div class="hero-badge rise-1 mono">
+        <span class="signal-node" aria-hidden="true"></span>
+        <span>Studio online · Ahmedabad, IN</span>
+      </div>
+
+      <h1 class="hero-head rise-2">
+        AI-first software<br />
+        engineering.<span class="dot">.</span><br />
+        <span class="muted">10&times; faster execution.</span>
+      </h1>
+
+      <div class="hero-foot rise-3">
+        <p class="lede">
+          Software is no longer built. It is engineered with intelligence —
+          systems that learn faster, adapt continuously, and execute at a
+          speed traditional development cannot match.
+        </p>
+        <div class="hero-ctas">
+          <a href="/contact" class="btn">Start a project</a>
+          <a href="/services" class="btn btn-ghost">What we engineer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MARQUEE ========== -->
+  <Marquee items={stackItems} />
+
+  <!-- ========== POSITIONING ========== -->
+  <section class="section">
+    <div class="container col-split">
+      <div class="col-marker">
+        <p class="sec-index">01 — Position</p>
+      </div>
+      <div>
+        <h2>We don&rsquo;t layer AI onto products. We architect products around it.</h2>
+        <p class="lede" style="margin-top: 1.5rem;">
+          At Sapiogen AI, we operate where engineering meets autonomy — where
+          every system is designed AI-first, and every outcome is driven with
+          precision. From the first interaction to the final deployment,
+          intelligence is embedded into the core.
+        </p>
+        <p class="lede" style="margin-top: 1rem; color: var(--text-muted);">
+          This is not a better way to build software. It is a fundamentally
+          different approach.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TERMINAL / CODE INTERLUDE ========== -->
+  <section class="section terminal-section">
+    <div class="container col-split">
+      <div class="col-marker">
+        <p class="sec-index">02 — Shape</p>
+      </div>
+      <div>
+        <h2>The shape of an AI-first system.</h2>
+        <p class="lede" style="margin-top: 1rem; color: var(--text-muted); max-width: 56ch;">
+          Not a product with a model inside it — a system that treats the
+          model as a first-class component, with the engineering around it to
+          make it reliable in production.
+        </p>
+
+        <div style="margin-top: 2.5rem;">
+          <TerminalBlock title="sapiogen://architecture.sketch">
+<span class="cmt">// Not: product → feature → model-call</span>
+<span class="cmt">// Instead:</span>
+
+<span class="kw">intent</span>  → <span class="str">normalise</span>, <span class="str">validate</span>, <span class="str">authorize</span>
+<span class="kw">context</span> → <span class="str">retrieve</span>, <span class="str">rank</span>, <span class="str">compose</span>
+<span class="kw">model</span>   → <span class="str">route</span>, <span class="str">generate</span>, <span class="str">evaluate</span>
+<span class="kw">action</span>  → <span class="str">confirm</span>, <span class="str">execute</span>, <span class="str">observe</span>
+<span class="kw">learn</span>   → <span class="str">log</span>, <span class="str">eval</span>, <span class="str">improve</span>
+
+<span class="cmt">// Every arrow is engineered, measured, and ownable.</span>
+<span class="prompt">$</span> _<span class="cursor"></span>
+          </TerminalBlock>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CAPABILITIES ========== -->
+  <section class="section">
+    <div class="container col-split">
+      <div class="col-marker">
+        <p class="sec-index">03 — Capabilities</p>
+      </div>
+      <div>
+        <h2>Eight disciplines. One engineering model.</h2>
+        <p class="lede" style="margin-top: 1rem; color: var(--text-muted);">
+          Shippable from a single team.
+        </p>
+
+        <ul class="cap-list">
+          {services.map((s) => (
+            <li class="cap-item">
+              <a href={`/services#${s.id}`}>
+                <span class="cap-title">{s.title}</span>
+                <span class="cap-desc muted">{s.short}</span>
+                <span class="cap-rule" aria-hidden="true"></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== METRICS ========== -->
+  <section class="section">
+    <div class="container">
+      <p class="sec-index">04 — By the numbers</p>
+      <h2 class="metrics-head">What AI-first makes possible.</h2>
+
+      <div class="metrics-grid">
+        <MetricCounter value={10} suffix="×" label="Faster execution vs. traditional dev cycles" />
+        <MetricCounter value={8} label="Engineering disciplines under one roof" />
+        <MetricCounter value={100} suffix="%" label="Engagements measured against defined outcomes" />
+        <MetricCounter value={0} label="Rebuilds required to add intelligence later" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PHILOSOPHY ========== -->
+  <section class="section philosophy">
+    <div class="container">
+      <p class="sec-index">05 — Philosophy</p>
+      <blockquote class="pullquote">
+        <span class="mark pullquote-mark">AI + Humans.</span>
+        Engineering 10&times; faster. Because the future of software isn&rsquo;t
+        just AI-powered; it&rsquo;s AI-built, outcome-driven, and engineered to
+        lead.
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <CTABanner
+    eyebrow="06 — Build"
+    title="If you&rsquo;re building what&rsquo;s next,<br/>let&rsquo;s build it AI-first."
+    primaryHref="/contact"
+    primaryLabel="Start a conversation"
+    secondaryHref="/work"
+    secondaryLabel="See our work"
+  />
+
+</BaseLayout>
+
+<style>
+  /* -------- Hero -------- */
+  .hero {
+    min-height: 86vh;
+    min-height: 86dvh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-block: clamp(3rem, 10vw, 6rem);
+    overflow: hidden;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-net {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.18;
+    color: var(--text);
+    z-index: 0;
+  }
+  .hero-inner { position: relative; z-index: 2; width: 100%; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--rule-strong);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+  }
+  .hero-head {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--fs-mega);
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+    margin: 0 0 3rem;
+    max-width: 18ch;
+  }
+  .hero-head .dot {
+    color: var(--text);
+    display: inline-block;
+    transform: translateY(-0.1em);
+    font-weight: 500;
+  }
+  .hero-foot {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: end;
+    border-top: 1px solid var(--rule);
+    padding-top: 2.5rem;
+  }
+  .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .hero-foot { grid-template-columns: 1fr; gap: 1.75rem; align-items: start; }
+  }
+  @media (max-width: 520px) {
+    .hero { min-height: 78vh; }
+    .hero-head { margin-bottom: 2rem; }
+  }
+
+  /* -------- Capability list -------- */
+  .cap-list {
+    list-style: none;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .cap-item a {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 2.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    transition: padding var(--dur-med) var(--ease);
+  }
+  .cap-item a:hover { padding-left: 0.75rem; }
+  .cap-item a:hover .cap-rule { width: 32px; }
+  .cap-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .cap-desc { font-size: 0.95rem; line-height: 1.55; max-width: 50ch; }
+  .cap-rule {
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    width: 0;
+    height: 1px;
+    background: var(--text);
+    transition: width var(--dur-med) var(--ease);
+  }
+  @media (max-width: 760px) {
+    .cap-item a { grid-template-columns: 1fr; gap: 0.4rem; padding: 1.25rem 0; }
+    .cap-item a:hover { padding-left: 0; }
+    .cap-rule { display: none; }
+  }
+
+  /* -------- Metrics -------- */
+  .metrics-head { margin: 1rem 0 2.5rem; }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 2rem;
+  }
+  @media (max-width: 900px) { .metrics-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; } }
+  @media (max-width: 480px) { .metrics-grid { grid-template-columns: 1fr; gap: 1rem; } }
+
+  /* -------- Philosophy -------- */
+  .philosophy { padding-block: clamp(5rem, 12vw, 10rem); }
+  .pullquote {
+    font-size: clamp(1.5rem, 4vw, 3.25rem);
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-top: 2rem;
+    max-width: 24ch;
+    color: var(--text-muted);
+  }
+  .pullquote-mark {
+    display: block;
+    font-size: 0.65em;
+    color: var(--text);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+</style>
